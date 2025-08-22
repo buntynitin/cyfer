@@ -10,7 +10,7 @@ A secure, cross-platform password manager built with Rust and Tauri, featuring m
 ## 🎥 Demo
 There's a prebuilt binary available on the releases page run it on MacOS
 
-[![Watch the video](https://raw.githubusercontent.com/buntynitin/cyfer/refs/heads/main/assets/screenshot.jpeg)](https://raw.githubusercontent.com/buntynitin/cyfer/refs/heads/main/assets/demo.mp4)
+https://github.com/user-attachments/assets/7802e0b9-740a-457f-8676-a1da02c9a507
 
 ## 🔐 Security Features
 
