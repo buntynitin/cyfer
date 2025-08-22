@@ -2,7 +2,6 @@
 
 use cyfer_core::vault::{SecretBundle, Vault};
 
-
 #[tauri::command]
 fn check_if_vault_exists() -> Result<bool, String> {
     let vault_path = cyfer_core::vault::default_vault_path().unwrap();
@@ -48,10 +47,16 @@ fn get_service(master_password: &str, service: &str) -> Result<SecretBundle, Str
 }
 
 #[tauri::command]
-fn add_service(master_password: &str, service: &str, secret_bundle: SecretBundle) -> Result<bool, String> {
+fn add_service(
+    master_password: &str,
+    service: &str,
+    secret_bundle: SecretBundle,
+) -> Result<bool, String> {
     let vault_path = cyfer_core::vault::default_vault_path().unwrap();
     let mut vault = Vault::read(&vault_path).unwrap();
-    vault.add_service(&vault_path, master_password, service, &secret_bundle).unwrap();
+    vault
+        .add_service(&vault_path, master_password, service, &secret_bundle)
+        .unwrap();
     return Ok(true);
 }
 
@@ -59,16 +64,25 @@ fn add_service(master_password: &str, service: &str, secret_bundle: SecretBundle
 fn delete_service(master_password: &str, service: &str) -> Result<bool, String> {
     let vault_path = cyfer_core::vault::default_vault_path().unwrap();
     let mut vault = Vault::read(&vault_path).unwrap();
-    vault.delete_service(&vault_path, master_password, service).unwrap();
+    vault
+        .delete_service(&vault_path, master_password, service)
+        .unwrap();
     return Ok(true);
 }
-
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![check_if_vault_exists, is_correct_password, create_vault, list_services, get_service, add_service, delete_service])
+        .invoke_handler(tauri::generate_handler![
+            check_if_vault_exists,
+            is_correct_password,
+            create_vault,
+            list_services,
+            get_service,
+            add_service,
+            delete_service
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
