@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "cyfer-core",
+  "cyfer-cli",
+  "cyfer-app/src-tauri"
+]
