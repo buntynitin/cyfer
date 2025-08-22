@@ -4,7 +4,7 @@
 [![Tauri](https://img.shields.io/badge/Tauri-FFC131?style=for-the-badge&logo=tauri&logoColor=black)](https://tauri.app/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 
-A secure, cross-platform password manager built with Rust and Tauri, featuring military-grade encryption and a modern user interface.
+A secure, cross-platform password manager built with Rust and Tauri, featuring military-grade encryption and a modern user interface. No more searching passwords in notes app.
 
 ## 🔐 Security Features
 
@@ -29,6 +29,12 @@ A secure, cross-platform password manager built with Rust and Tauri, featuring m
 - **Encrypted at Rest**: All passwords and metadata are encrypted before storage
 - **Secure Deletion**: Sensitive data is zeroized from memory immediately after use
 - **No Plaintext Logging**: Passwords are never logged or displayed in plaintext
+
+### Security Parameters
+The default KDF parameters provide a balance of security and performance:
+- **Memory**: 19 MB (prevents GPU/ASIC attacks)
+- **Time**: 2 iterations (configurable for higher security)
+- **Parallelism**: 1 thread (prevents parallel attacks)
 
 ## 🏗️ Architecture
 
@@ -117,33 +123,12 @@ cyfer-rust/
 └── temp/                 # Temporary development files
 ```
 
-## 🔧 Configuration
-
-### Vault Location
+## Vault Location
 By default, vaults are stored in:
 - **macOS**: `~/Library/Application Support/cyfer-rs/vault.json`
 - **Linux**: `~/.local/share/cyfer-rs/vault.json`
 - **Windows**: `%APPDATA%\cyfer-rs\vault.json`
 
-### Security Parameters
-The default KDF parameters provide a balance of security and performance:
-- **Memory**: 19 MB (prevents GPU/ASIC attacks)
-- **Time**: 2 iterations (configurable for higher security)
-- **Parallelism**: 1 thread (prevents parallel attacks)
-
-## 🛡️ Security Best Practices
-
-### For Users
-1. **Strong Master Password**: Use a long, complex master password
-2. **Regular Backups**: Keep encrypted vault backups in secure locations
-3. **Device Security**: Ensure your device is secure and malware-free
-4. **Password Hygiene**: Use unique passwords for each service
-
-### For Developers
-1. **Dependency Updates**: Keep all dependencies updated
-2. **Security Audits**: Regular security audits of the codebase
-3. **Memory Handling**: Always use zeroization for sensitive data
-4. **Input Validation**: Validate all user inputs before processing
 
 ## 🧪 Development
 
@@ -229,7 +214,7 @@ cargo audit
 
 ## 🔒 Security Considerations
 
-### What We Protect Against
+### What this Protect Against
 - **Brute Force Attacks**: Argon2id with high memory cost
 - **Rainbow Table Attacks**: Unique salt per vault
 - **Memory Dumps**: Automatic zeroization
