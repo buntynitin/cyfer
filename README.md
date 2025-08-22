@@ -6,6 +6,12 @@
 
 A secure, cross-platform password manager built with Rust and Tauri, featuring military-grade encryption and a modern user interface. No more searching passwords in notes app.
 
+
+## 🎥 Demo
+There's a prebuilt binary available on the releases page run it on MacOS
+
+https://raw.githubusercontent.com/buntynitin/cyfer/refs/heads/main/assets/demo.mp4
+
 ## 🔐 Security Features
 
 ### Encryption & Cryptography
@@ -117,10 +123,10 @@ cyfer-cli del github
 cyfer-rust/
 ├── cyfer-core/          # Core Rust library with crypto operations
 ├── cyfer-cli/           # Command-line interface
-├── cyfer-app/           # Tauri desktop application
-│   ├── src/             # React frontend
-│   └── src-tauri/       # Tauri backend
-└── temp/                 # Temporary development files
+└── cyfer-app/           # Tauri desktop application
+    ├── src/             # React frontend
+    └── src-tauri/       # Tauri backend
+
 ```
 
 ## Vault Location
